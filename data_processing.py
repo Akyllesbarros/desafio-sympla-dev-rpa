@@ -8,8 +8,8 @@ def processar_arquivo_excel(arquivo_excel):
     # Carregar os dados do Excel
     df_excel = pd.read_excel(arquivo_excel, header=None, names=["Capital/populacao"])
 
-    # Descarta a primeira linha se for cabeçalho
-    df_excel = df_excel.iloc[1:]  # Ignorar o cabeçalho "Capital/populacao"
+    # Ignorar o cabeçalho "Capital/populacao"
+    df_excel = df_excel.iloc[1:]  
 
     # Separar as colunas com base no delimitador ":"
     df_excel[['capital', 'populacao']] = df_excel['Capital/populacao'].str.split(':', expand=True)

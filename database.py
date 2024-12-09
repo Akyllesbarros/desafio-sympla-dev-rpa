@@ -68,7 +68,7 @@ def realizar_consultas_e_exportar(db_path="database/estados.db"):
         if not os.path.exists(OUTPUT_FOLDER):
             os.makedirs(OUTPUT_FOLDER)
 
-        # Consulta 1
+        # Consulta 1 - 3 Regiões mais populosas
         logger.info("Executando consulta para as 3 regiões mais populosas.")
         df_top3_regioes = pd.read_sql_query("""
             SELECT regiao, SUM(populacao) AS total_populacao
@@ -80,7 +80,7 @@ def realizar_consultas_e_exportar(db_path="database/estados.db"):
         df_top3_regioes.to_csv("outputs/top3_regioes_populosas.csv", index=False)
         logger.info("Consulta 1 exportada com sucesso para 'top3_regioes_populosas.csv'.")
 
-        # Consulta 2
+        # Consulta 2 - Regiões e Quantidade de capitais
         logger.info("Executando consulta para regiões e quantidade de capitais.")
         df_regioes_n_capitais = pd.read_sql_query("""
             SELECT regiao, COUNT(capital) AS numero_capitais
@@ -93,7 +93,7 @@ def realizar_consultas_e_exportar(db_path="database/estados.db"):
         )
         logger.info("Consulta 2 exportada com sucesso para 'regioes_n_capitais.xls'.")
 
-        # Consulta 3
+        # Consulta 3 - 2 Estados capitais mais populosas
         logger.info("Executando consulta para os 2 estados com as capitais mais populosas.")
         df_estados_mais_populosos = pd.read_sql_query("""
             SELECT estado, capital, populacao

@@ -6,10 +6,6 @@ import os
 
 logger = get_logger()
 
-
-
-
-# Testar a função
 if __name__ == "__main__":
     # Dados extraídos do Selenium
     siglas, estados, capitais, regioes = coletar_dados_estados()
